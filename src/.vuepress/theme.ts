@@ -3,12 +3,12 @@ import { zhNavbar } from "./navbar/index.js";
 import { zhSidebar } from "./sidebar/index.js";
 export default MyTheme({
   hotReload: true,
-  hostname: "https://c0yt.github.io",
+  hostname: "https://blog.fzero.me",
   themeColor: true,
   fullscreen: true,
   author: {
     name: "null",
-    url: "https://c0yt.github.io",
+    url: "https://blog.fzero.me",
   },
 
   iconAssets: [

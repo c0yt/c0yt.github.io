@@ -23,7 +23,7 @@ projects:
   - icon: /assets/lyb.svg
     name: 留言板
     desc: 欢迎来留言哦~
-    link: /visitorsbook
+    link: /talk
 
   # - icon: /assets/shoucang.svg
   #   name: 收藏

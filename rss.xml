@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="https://c0yt.github.io/rss.xsl"?>
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="https://blog.fzero.me/rss.xsl"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
-    <atom:link href="https://c0yt.github.io/rss.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="https://blog.fzero.me/rss.xml" rel="self" type="application/rss+xml"/>
     <title>null&amp;apos;s Blog</title>
-    <link>https://c0yt.github.io/</link>
+    <link>https://blog.fzero.me/</link>
     <description>null&amp;apos;s Blog</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 20 Mar 2025 14:26:18 GMT</pubDate>
-    <lastBuildDate>Thu, 20 Mar 2025 14:26:18 GMT</lastBuildDate>
+    <pubDate>Thu, 20 Mar 2025 14:41:42 GMT</pubDate>
+    <lastBuildDate>Thu, 20 Mar 2025 14:41:42 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>Blog</category>
@@ -15,9 +15,9 @@
     <category>project</category>
     <item>
       <title>关于本站</title>
-      <link>https://c0yt.github.io/about.html</link>
-      <guid>https://c0yt.github.io/about.html</guid>
-      <source url="https://c0yt.github.io/rss.xml">关于本站</source>
+      <link>https://blog.fzero.me/about.html</link>
+      <guid>https://blog.fzero.me/about.html</guid>
+      <source url="https://blog.fzero.me/rss.xml">关于本站</source>
       <description>关于本站 ✨📒 待完善 test</description>
       <category>Blog</category>
       <pubDate>Thu, 20 Mar 2025 20:45:00 GMT</pubDate>
@@ -31,9 +31,9 @@
     </item>
     <item>
       <title>关于我</title>
-      <link>https://c0yt.github.io/intro.html</link>
-      <guid>https://c0yt.github.io/intro.html</guid>
-      <source url="https://c0yt.github.io/rss.xml">关于我</source>
+      <link>https://blog.fzero.me/intro.html</link>
+      <guid>https://blog.fzero.me/intro.html</guid>
+      <source url="https://blog.fzero.me/rss.xml">关于我</source>
       <description>关于我 ✨📒 待完善</description>
       <category>About</category>
       <pubDate>Thu, 20 Mar 2025 00:00:00 GMT</pubDate>
@@ -46,9 +46,9 @@
     </item>
     <item>
       <title>XkTool</title>
-      <link>https://c0yt.github.io/project/XkTool.html</link>
-      <guid>https://c0yt.github.io/project/XkTool.html</guid>
-      <source url="https://c0yt.github.io/rss.xml">XkTool</source>
+      <link>https://blog.fzero.me/project/XkTool.html</link>
+      <guid>https://blog.fzero.me/project/XkTool.html</guid>
+      <source url="https://blog.fzero.me/rss.xml">XkTool</source>
       <description>XkTool ✨ 正方教务选课工具 Version Language 📌 声明： ​ 选课脚本Demo，仅支持自用，禁止用于个人盈利或其他非法用途，使用本程序导致的任何问题由使用者自行承担。 碎碎念： ​ &amp;quot;欲买桂花同载酒，终不似，少年游&amp;quot;，大三时开发的脚本，目前暂时仅测试过一次，真的是和大一大二时拥有的感觉是不一样的，希望大家都能在最先想做的时候去...</description>
       <category>project</category>
       <pubDate>Thu, 20 Mar 2025 20:48:00 GMT</pubDate>

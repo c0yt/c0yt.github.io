@@ -2,4 +2,4 @@
 User-agent:*
 Disallow:
 
-Sitemap: https://c0yt.github.io/sitemap.xml
+Sitemap: https://blog.fzero.me/sitemap.xml

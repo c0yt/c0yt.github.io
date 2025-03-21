@@ -96,7 +96,7 @@ export default MyTheme({
           key: "thinks",
           filter: (page) => page.frontmatter.thinks === true,
           layout: "News",
-          frontmatter: () => ({ title: "说说" }),
+          frontmatter: () => ({ title: "碎碎念" }),
         },
       ],
     },

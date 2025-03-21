@@ -56,6 +56,11 @@ export const zhNavbar = navbar([
     link: "/thinks/",
   },
   {
+    text: "时光机",
+    icon: "time",
+    link: "/timeline/",
+  },
+  {
     text: "留言板",
     icon: "mark",
     link: "/talk",

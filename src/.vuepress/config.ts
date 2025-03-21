@@ -13,7 +13,8 @@ import theme from "./theme.js";
 import { popperPlugin } from "./plugins/vuepress-plugin-popper";
 import { PopperShape } from "@moefy-canvas/theme-popper";
 import { hitokotoPlugin } from "./plugins/vuepress-plugin-hitokoto";
-import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
+// import { effectsPlugin } from "./plugins/vuepress-plugin-cursor-effects"
+// import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
 import metingPlugin from "vuepress-plugin-meting2";
 
 const __dirname = getDirname(import.meta.url);
@@ -80,6 +81,14 @@ export default defineUserConfig({
     live2DAssistPlugin({
       subPageHidden: true,
     }),
+    // 动态标题插件
+    // effectsPlugin({
+    //   showIcon: '/favicon.ico',
+    //   showText: '(/≧▽≦/)咦！又好了！',
+    //   hideIcon: '/favicon.ico',
+    //   hideText: '(●—●)喔哟，崩溃啦！',
+    //   recoverTime: 2000,
+    // }),
     // 背景插件
     canvasPlugin({
       type: CanvasPluginType.Figure,

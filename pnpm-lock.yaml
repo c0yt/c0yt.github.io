@@ -102,6 +102,9 @@ importers:
       vuepress:
         specifier: 2.0.0-rc.12
         version: 2.0.0-rc.12(@vuepress/bundler-vite@2.0.0-rc.12(@types/node@20.12.13)(jiti@1.21.0)(sass@1.77.3)(terser@5.31.0)(typescript@5.4.5))(typescript@5.4.5)(vue@3.5.13(typescript@5.4.5))
+      vuepress-plugin-cursor-effects:
+        specifier: ^1.1.6
+        version: 1.1.6
       vuepress-plugin-meting2:
         specifier: 1.4.2
         version: 1.4.2
@@ -3847,6 +3850,9 @@ packages:
         optional: true
       vidstack:
         optional: true
+
+  vuepress-plugin-cursor-effects@1.1.6:
+    resolution: {integrity: sha512-4qXL2flMQcd6ecp+LhdChspobhdb9fkAfmRjRs2K3a/DiwtQtOE24jaVFCClwhfDpYuRe48a0KVeROYkdiWuXg==}
 
   vuepress-plugin-md-enhance@2.0.0-rc.45:
     resolution: {integrity: sha512-5Ygw/ZsEf9zQJ5louY2uwbLPxF6KY4SHGOaPgCIGfMygrqcElapXUP7+eodOnw0JwEKPQcZzdyWRUBHQxPwOSg==}
@@ -8219,6 +8225,10 @@ snapshots:
     transitivePeerDependencies:
       - '@vue/composition-api'
       - typescript
+
+  vuepress-plugin-cursor-effects@1.1.6:
+    dependencies:
+      '@moefy-canvas/theme-popper': 0.5.2
 
   vuepress-plugin-md-enhance@2.0.0-rc.45(@vue/repl@4.2.0)(chart.js@4.4.3)(echarts@5.5.0)(flowchart.ts@2.0.0)(katex@0.16.10)(markdown-it@14.1.0)(mermaid@10.9.1)(reveal.js@5.1.0)(typescript@5.4.5)(vuepress@2.0.0-rc.12(@vuepress/bundler-vite@2.0.0-rc.12(@types/node@20.12.13)(jiti@1.21.0)(sass@1.77.3)(terser@5.31.0)(typescript@5.4.5))(typescript@5.4.5)(vue@3.5.13(typescript@5.4.5))):
     dependencies:

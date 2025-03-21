@@ -3,7 +3,8 @@
     <article class="vp-article-item" vocab="https://schema.org/" typeof="Article">
       <div class="news-item-content">
         <div class="info-row">
-          <img class="avatar" src="/assets/avatar.webp" />
+          <!-- 设置头像 -->
+          <img class="avatar" src="/assets/avatar.webp" />  
           <div>
             <a href="/intro"><span class="name">null</span></a>
             <div class="page-info" v-if="pinfo">

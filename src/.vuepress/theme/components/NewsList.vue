@@ -30,8 +30,8 @@ import { EmptyIcon } from "@theme-hope/modules/blog/components/icons/index";
 import { useBlogOptions } from "@theme-hope/modules/blog/composables/index";
 import { isSupported, usePageview } from "@vuepress/plugin-comment/pageview";
 import NewsItem from "./NewsItem.vue";
-import { HitokotoApi } from "../../plugins/vuepress-plugin-hitokoto/client/hitokoto-api";
 import { ArticleInfoData } from "vuepress-theme-hope/shared";
+import TimelineNav from "./TimelineNav.vue";
 
 const props = defineProps<{
   items: Article<ArticleInfoData>[];
@@ -42,29 +42,38 @@ const blogOptions = useBlogOptions();
 const updatePageview = usePageview();
 const currentPage = ref(1);
 const articlePerPage = computed(() => blogOptions.value.articlePerPage ?? 10);
-const currentArticles = computed(() => props.items.slice((currentPage.value - 1) * articlePerPage.value, currentPage.value * articlePerPage.value));
-const hitokotoContent = ref('');
+const currentDate = ref<{ year: number; month: number } | undefined>();
+
+const filteredItems = computed(() => {
+  if (!currentDate.value) return props.items;
+  
+  return props.items.filter(item => {
+    const date = new Date(item.info.date);
+    return date.getFullYear() === currentDate.value?.year &&
+           date.getMonth() + 1 === currentDate.value?.month;
+  });
+});
+
+const currentArticles = computed(() => 
+  filteredItems.value.slice(
+    (currentPage.value - 1) * articlePerPage.value,
+    currentPage.value * articlePerPage.value
+  )
+);
+
+const hitokotoContent = ref('站在屋顶只对风说，不想被左右');
 
 const imageKey = ref(Math.random());
 
 router.beforeEach((to, from, next) => {
-  // 执行重新加载图片的逻辑
   imageKey.value = Math.random();
   next();
 });
-// 获取一言
-(async function () {
-  const res = await HitokotoApi.request();
-  if (res.status == 200) {
-    hitokotoContent.value = res.data.hitokoto;
-  }
-})();
 
 const updatePage = async (page) => {
   currentPage.value = page;
   const query = { ...route.query };
-  const needUpdate = !(query["page"] === page.toString() || // Page equal as query
-    // Page is 1 and query is empty
+  const needUpdate = !(query["page"] === page.toString() || 
     (page === 1 && !query["page"]));
   if (needUpdate) {
     if (page === 1)
@@ -78,11 +87,20 @@ const updatePage = async (page) => {
     updatePageview({ selector: ".vp-pageview" });
   }
 };
+
+const handleDateSelect = (year: number, month: number) => {
+  if (currentDate.value?.year === year && currentDate.value?.month === month) {
+    currentDate.value = undefined;
+  } else {
+    currentDate.value = { year, month };
+  }
+  currentPage.value = 1;
+};
+
 onMounted(() => {
   const { page } = route.query;
   void updatePage(page ? Number(page) : 1);
   watch(currentPage, () => {
-    // List top border distance
     const distance = document.querySelector("#article-list").getBoundingClientRect().top +
       window.scrollY;
     setTimeout(() => {

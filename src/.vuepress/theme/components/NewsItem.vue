@@ -1,6 +1,11 @@
 <template>
   <div class="vp-article-wrapper">
-    <article class="vp-article-item" vocab="https://schema.org/" typeof="Article">
+    <article 
+      class="vp-article-item clickable" 
+      vocab="https://schema.org/" 
+      typeof="Article"
+      @click="navigateToDetail"
+    >
       <div class="news-item-content">
         <div class="info-row">
           <!-- 设置头像 -->
@@ -69,6 +74,11 @@ const router = useRouter();
 // 2024年02月21日15:24:10 更改routeName为routePath 因为Content组件变化
 const route = router.resolve(props.path);
 const routePath = computed(() => (route ? route.path.toString() : ""));
+
+// 添加跳转函数
+const navigateToDetail = () => {
+  router.push(props.path);
+};
 </script>
 
 <style lang="scss" scoped>
@@ -129,9 +139,15 @@ const routePath = computed(() => (route ? route.path.toString() : ""));
   transition: background var(--color-transition),
     box-shadow var(--color-transition), transform 0.5s ease;
 
+  &.clickable {
+    cursor: pointer;
+    user-select: none;
+  }
+
+  // 优化悬浮效果
   &:hover {
-    box-shadow: 0 2px 6px 2px var(--card-shadow);
-    transform: scale(1.01);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
   }
 }
 

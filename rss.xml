@@ -6,8 +6,8 @@
     <link>https://blog.fzero.me/</link>
     <description>null&amp;apos;s Blog</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 21 Mar 2025 14:30:17 GMT</pubDate>
-    <lastBuildDate>Fri, 21 Mar 2025 14:30:17 GMT</lastBuildDate>
+    <pubDate>Sun, 23 Mar 2025 08:06:01 GMT</pubDate>
+    <lastBuildDate>Sun, 23 Mar 2025 08:06:01 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>Blog</category>
@@ -18,7 +18,7 @@
       <link>https://blog.fzero.me/about.html</link>
       <guid>https://blog.fzero.me/about.html</guid>
       <source url="https://blog.fzero.me/rss.xml">关于本站</source>
-      <description>关于本站 ✨ 这是null的秘密基地，用于记录相关学习笔记与生活 框架支持 &amp; 主题 框架: Vuepress 主题: VuePress Theme Hope 关于主题美化 本站大部分参考了上冬十二的站点进行美化，非常感谢大佬对自己的成果无私开源∠(°ゝ°)</description>
+      <description>关于本站 ✨ 这是null的秘密基地，用于记录相关学习笔记与生活 框架支持 &amp; 主题 框架: Vuepress 主题: VuePress Theme Hope 关于主题美化 本站主题美化大部分参考了上冬十二的站点进行美化，非常感谢大佬对自己的成果无私开源∠(°ゝ°)</description>
       <category>Blog</category>
       <pubDate>Thu, 20 Mar 2025 20:45:00 GMT</pubDate>
       <content:encoded><![CDATA[
@@ -30,7 +30,7 @@
 <p>框架: <a href="https://v2.vuepress.vuejs.org/zh/" target="_blank" rel="noopener noreferrer">Vuepress</a><br>
 主题: <a href="https://theme-hope.vuejs.press/zh/" target="_blank" rel="noopener noreferrer">VuePress Theme Hope</a></p>
 <h2>关于主题美化</h2>
-<p>本站大部分参考了<a href="https://oragekk.me/" target="_blank" rel="noopener noreferrer">上冬十二</a>的站点进行美化，非常感谢大佬对自己的成果无私开源∠(°ゝ°)</p>
+<p>本站主题美化大部分参考了<a href="https://oragekk.me/" target="_blank" rel="noopener noreferrer">上冬十二</a>的站点进行美化，非常感谢大佬对自己的成果无私开源∠(°ゝ°)</p>
 ]]></content:encoded>
     </item>
     <item>

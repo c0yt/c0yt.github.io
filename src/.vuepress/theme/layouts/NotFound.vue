@@ -8,7 +8,11 @@
           <h1 class="error-title">
             {{ getTitle }}
           </h1>
-          <p class="error-hint">{{ getMsg() }}</p>
+          <div class="terminal-message">
+            <span class="terminal-prompt">&gt;</span>
+            <span class="error-hint typewriter">{{ getMsg() }}</span>
+            <span class="cursor"></span>
+          </div>
         </div>
         <div class="actions">
           <button class="action-button left" @click="goBack">返回上一页</button>
@@ -245,6 +249,121 @@ const background = computed(() => {
     &:hover {
       background: var(--theme-color-light);
       cursor: pointer;
+    }
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.6s ease, height 0.6s ease;
+    }
+  
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    
+      &::before {
+        width: 300px;
+        height: 300px;
+      }
+    }
+  
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+.terminal-message {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  box-shadow: 
+    0 4px 24px -1px rgba(0, 0, 0, 0.1),
+    0 1px 2px rgba(255, 255, 255, 0.05) inset;
+  margin: 1.5rem 0;
+  min-width: 300px;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+  }
+}
+
+.error-hint {
+  display: inline-block;
+  font-family: 'Fira Code', monospace;
+  color: var(--text-color);
+  font-size: 1.2rem;
+  position: relative;
+  width: fit-content;
+  
+  &.typewriter {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: none;
+    width: 0;
+    animation: typing 2s steps(40, end) forwards;
+  }
+}
+
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1.2rem;
+  background-color: #50e3eb;
+  margin-left: 4px;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes typing {
+  from { 
+    width: 0;
+  }
+  to { 
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  from, to { 
+    opacity: 0;
+  }
+  50% { 
+    opacity: 1;
+  }
+}
+
+// 适配深色模式
+[data-theme="dark"] {
+  .terminal-message {
+    background: rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.05);
+    
+    &:hover {
+      border-color: rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.3);
+    }
+  }
+  
+  .action-button {
+    &::before {
+      background: rgba(255, 255, 255, 0.1);
     }
   }
 }

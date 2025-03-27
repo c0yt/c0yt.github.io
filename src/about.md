@@ -10,7 +10,7 @@ tag:
 # 关于本站
 
 :::: info ✨
-  这是null的秘密基地，用于记录相关学习笔记与生活
+  这是null的后花园，用于记录相关学习笔记与生活
 ::::
 ## 框架支持 & 主题
 框架: [Vuepress](https://v2.vuepress.vuejs.org/zh/)

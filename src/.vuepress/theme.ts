@@ -33,7 +33,7 @@ export default MyTheme({
 
   blog: {
     medias: {
-      Email: "mailto:3057311151@qq.com",
+      Email: "mailto:fzero1723@gmail.com",
       GitHub: "https://github.com/c0yt",
     },
     name: "null",

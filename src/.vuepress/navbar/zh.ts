@@ -34,6 +34,18 @@ export const zhNavbar = navbar([
   //   ],
   // },
   {
+    text: "笔记",
+    icon: "study",
+    prefix: "/study/",
+    children: [
+      {
+        text: "NFS配置",
+        icon: "study",
+        link: "NFS-config"
+      }
+    ]
+  },
+  {
     text: "项目",
     icon: "software",
     prefix: "/project/",

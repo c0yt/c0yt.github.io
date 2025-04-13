@@ -6,8 +6,8 @@
     <link>https://blog.fzero.me/</link>
     <description>null&amp;apos;s Blog</description>
     <language>zh-CN</language>
-    <pubDate>Sat, 12 Apr 2025 14:16:17 GMT</pubDate>
-    <lastBuildDate>Sat, 12 Apr 2025 14:16:17 GMT</lastBuildDate>
+    <pubDate>Sun, 13 Apr 2025 12:26:17 GMT</pubDate>
+    <lastBuildDate>Sun, 13 Apr 2025 12:26:17 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>study</category>
@@ -19,33 +19,24 @@
       <link>https://blog.fzero.me/study/NFS-config.html</link>
       <guid>https://blog.fzero.me/study/NFS-config.html</guid>
       <source url="https://blog.fzero.me/rss.xml">NFS配置</source>
-      <description>NFS配置 一、安装NFS服务 检测安装情况 未安装情况 二、服务端配置 创建共享目录 编辑/etc/exports文件 填写以下内容 重新加载让配置生效 启动rpcbind服务 启动nfs服务 查看 RPC 服务的注册状况 检查服务端共享信息 三、客户端配置 安装NFS 创建挂载目录 挂载目录到本机/data/目录 查看挂载结果 至此，NFS配置结束...</description>
+      <description>NFS配置 一、安装NFS服务 1.检测安装情况 2.未安装情况 二、服务端配置 1.启动rpcbind服务 2.启动nfs服务 3.查看 RPC 服务的注册状况 4.创建共享目录 5.编辑/etc/exports文件 填写以下内容 6.重新加载让配置生效 7.检查服务端共享信息 三、客户端配置 1.安装NFS 2.创建挂载目录 3.挂载目录到本机/d...</description>
       <category>study</category>
       <pubDate>Sat, 12 Apr 2025 21:54:00 GMT</pubDate>
       <content:encoded><![CDATA[
-<h3>一、安装NFS服务</h3>
-<h4>检测安装情况</h4>
+<h2>一、安装NFS服务</h2>
+<h3>1.检测安装情况</h3>
 <div class="language-bash" data-ext="bash" data-title="bash"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">rpm</span><span style="color:#D19A66;--shiki-dark:#D19A66"> -qa</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> | </span><span style="color:#61AFEF;--shiki-dark:#61AFEF">grep</span><span style="color:#98C379;--shiki-dark:#98C379"> nfs-utils</span></span>
 <span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">rpm</span><span style="color:#D19A66;--shiki-dark:#D19A66"> -qa</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> | </span><span style="color:#61AFEF;--shiki-dark:#61AFEF">grep</span><span style="color:#98C379;--shiki-dark:#98C379"> rpcbind</span></span></code></pre>
-</div><h4>未安装情况</h4>
+</div><h3>2.未安装情况</h3>
 <div class="language-bash" data-ext="bash" data-title="bash"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">yum</span><span style="color:#D19A66;--shiki-dark:#D19A66"> -y</span><span style="color:#98C379;--shiki-dark:#98C379"> install</span><span style="color:#98C379;--shiki-dark:#98C379"> nfs-utils</span><span style="color:#98C379;--shiki-dark:#98C379"> rpcbind</span></span></code></pre>
-</div><h3>二、服务端配置</h3>
-<h4>创建共享目录</h4>
-<div class="language-bash" data-ext="bash" data-title="bash"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">mkdir</span><span style="color:#D19A66;--shiki-dark:#D19A66"> -p</span><span style="color:#98C379;--shiki-dark:#98C379"> /data/</span></span></code></pre>
-</div><h4>编辑/etc/exports文件</h4>
-<div class="language-bash" data-ext="bash" data-title="bash"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">vim</span><span style="color:#98C379;--shiki-dark:#98C379"> /etc/exports</span></span></code></pre>
-</div><p>填写以下内容</p>
-<div class="language-bash" data-ext="bash" data-title="bash"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">/data/</span><span style="color:#98C379;--shiki-dark:#98C379"> &nbsp;192.168.100.1/24</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">rw</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">)</span></span>
-<span class="line"><span style="color:#7F848E;--shiki-dark:#7F848E;font-style:italic;--shiki-dark-font-style:italic"># 限制192.168.100.1/24网段可访问，rw为读写权限</span></span></code></pre>
-</div><h4>重新加载让配置生效</h4>
-<div class="language-" data-ext="" data-title=""><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span>exportfs -r</span></span></code></pre>
-</div><h4>启动rpcbind服务</h4>
+</div><h2>二、服务端配置</h2>
+<h3>1.启动rpcbind服务</h3>
 <div class="language-bash" data-ext="bash" data-title="bash"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">systemctl</span><span style="color:#98C379;--shiki-dark:#98C379"> enable</span><span style="color:#98C379;--shiki-dark:#98C379"> rpcbind</span></span>
 <span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">systemctl</span><span style="color:#98C379;--shiki-dark:#98C379"> start</span><span style="color:#98C379;--shiki-dark:#98C379"> rpcbind</span></span></code></pre>
-</div><h4>启动nfs服务</h4>
+</div><h3>2.启动nfs服务</h3>
 <div class="language-bash" data-ext="bash" data-title="bash"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">systemctl</span><span style="color:#98C379;--shiki-dark:#98C379"> enable</span><span style="color:#98C379;--shiki-dark:#98C379"> nfs</span></span>
 <span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">systemctl</span><span style="color:#98C379;--shiki-dark:#98C379"> start</span><span style="color:#98C379;--shiki-dark:#98C379"> nfs</span></span></code></pre>
-</div><h4>查看 RPC 服务的注册状况</h4>
+</div><h3>3.查看 RPC 服务的注册状况</h3>
 <div class="language-bash line-numbers-mode" data-ext="bash" data-title="bash"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">[root@study sky]# rpcinfo -p</span></span>
 <span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">   program</span><span style="color:#98C379;--shiki-dark:#98C379"> vers</span><span style="color:#98C379;--shiki-dark:#98C379"> proto</span><span style="color:#98C379;--shiki-dark:#98C379">   port</span><span style="color:#98C379;--shiki-dark:#98C379">  service</span></span>
 <span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">    100000</span><span style="color:#D19A66;--shiki-dark:#D19A66">    4</span><span style="color:#98C379;--shiki-dark:#98C379">   tcp</span><span style="color:#D19A66;--shiki-dark:#D19A66">    111</span><span style="color:#98C379;--shiki-dark:#98C379">  portmapper</span></span>
@@ -74,18 +65,28 @@
 <span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">    100021</span><span style="color:#D19A66;--shiki-dark:#D19A66">    1</span><span style="color:#98C379;--shiki-dark:#98C379">   tcp</span><span style="color:#D19A66;--shiki-dark:#D19A66">  33609</span><span style="color:#98C379;--shiki-dark:#98C379">  nlockmgr</span></span>
 <span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">    100021</span><span style="color:#D19A66;--shiki-dark:#D19A66">    3</span><span style="color:#98C379;--shiki-dark:#98C379">   tcp</span><span style="color:#D19A66;--shiki-dark:#D19A66">  33609</span><span style="color:#98C379;--shiki-dark:#98C379">  nlockmgr</span></span>
 <span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">    100021</span><span style="color:#D19A66;--shiki-dark:#D19A66">    4</span><span style="color:#98C379;--shiki-dark:#98C379">   tcp</span><span style="color:#D19A66;--shiki-dark:#D19A66">  33609</span><span style="color:#98C379;--shiki-dark:#98C379">  nlockmgr</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4>检查服务端共享信息</h4>
+<div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3>4.创建共享目录</h3>
+<div class="language-bash" data-ext="bash" data-title="bash"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">mkdir</span><span style="color:#D19A66;--shiki-dark:#D19A66"> -p</span><span style="color:#98C379;--shiki-dark:#98C379"> /data/</span></span>
+<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">chown</span><span style="color:#D19A66;--shiki-dark:#D19A66"> -R</span><span style="color:#98C379;--shiki-dark:#98C379"> nfsnobody.nfsnobody</span><span style="color:#98C379;--shiki-dark:#98C379"> /data/</span></span></code></pre>
+</div><h3>5.编辑<code>/etc/exports</code>文件</h3>
+<div class="language-bash" data-ext="bash" data-title="bash"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">vim</span><span style="color:#98C379;--shiki-dark:#98C379"> /etc/exports</span></span></code></pre>
+</div><p>填写以下内容</p>
+<div class="language-bash" data-ext="bash" data-title="bash"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">/data/</span><span style="color:#98C379;--shiki-dark:#98C379"> &nbsp;192.168.100.1/24</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">rw</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="color:#7F848E;--shiki-dark:#7F848E;font-style:italic;--shiki-dark-font-style:italic"># 限制192.168.100.1/24网段可访问，rw为读写权限</span></span></code></pre>
+</div><h3>6.重新加载让配置生效</h3>
+<div class="language-" data-ext="" data-title=""><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span>systemctl reload nfs</span></span></code></pre>
+</div><h3>7.检查服务端共享信息</h3>
 <div class="language-bash" data-ext="bash" data-title="bash"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">[root@study data]# showmount -e localhost</span></span>
 <span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">Export</span><span style="color:#98C379;--shiki-dark:#98C379"> list</span><span style="color:#98C379;--shiki-dark:#98C379"> for</span><span style="color:#98C379;--shiki-dark:#98C379"> localhost:</span></span>
 <span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">/data</span><span style="color:#98C379;--shiki-dark:#98C379"> 192.168.100.1/24</span></span></code></pre>
-</div><h3>三、客户端配置</h3>
-<h4>安装NFS</h4>
+</div><h2>三、客户端配置</h2>
+<h3>1.安装NFS</h3>
 <div class="language-bash" data-ext="bash" data-title="bash"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">yum</span><span style="color:#D19A66;--shiki-dark:#D19A66"> -y</span><span style="color:#98C379;--shiki-dark:#98C379"> install</span><span style="color:#98C379;--shiki-dark:#98C379"> nfs-utils</span></span></code></pre>
-</div><h4>创建挂载目录</h4>
+</div><h3>2.创建挂载目录</h3>
 <div class="language-bash" data-ext="bash" data-title="bash"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">mkdir</span><span style="color:#D19A66;--shiki-dark:#D19A66"> -p</span><span style="color:#98C379;--shiki-dark:#98C379"> /data/</span></span></code></pre>
-</div><h4>挂载目录到本机/data/目录</h4>
+</div><h3>3.挂载目录到本机/data/目录</h3>
 <div class="language-bash" data-ext="bash" data-title="bash"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">mount</span><span style="color:#D19A66;--shiki-dark:#D19A66"> -t</span><span style="color:#98C379;--shiki-dark:#98C379"> nfs</span><span style="color:#98C379;--shiki-dark:#98C379"> 192.168.100.1:/data/</span><span style="color:#98C379;--shiki-dark:#98C379"> /data/</span><span style="color:#D19A66;--shiki-dark:#D19A66"> -o</span><span style="color:#98C379;--shiki-dark:#98C379"> proto=tcp</span><span style="color:#D19A66;--shiki-dark:#D19A66"> -o</span><span style="color:#98C379;--shiki-dark:#98C379"> nolock</span></span></code></pre>
-</div><h4>查看挂载结果</h4>
+</div><h3>4.查看挂载结果</h3>
 <div class="language-bash" data-ext="bash" data-title="bash"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">[root@study /]# df -h</span></span>
 <span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">Filesystem</span><span style="color:#98C379;--shiki-dark:#98C379">             Size</span><span style="color:#98C379;--shiki-dark:#98C379">  Used</span><span style="color:#98C379;--shiki-dark:#98C379"> Avail</span><span style="color:#98C379;--shiki-dark:#98C379"> Use%</span><span style="color:#98C379;--shiki-dark:#98C379"> Mounted</span><span style="color:#98C379;--shiki-dark:#98C379"> on</span></span>
 <span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">devtmpfs</span><span style="color:#98C379;--shiki-dark:#98C379">               471M</span><span style="color:#D19A66;--shiki-dark:#D19A66">     0</span><span style="color:#98C379;--shiki-dark:#98C379">  471M</span><span style="color:#98C379;--shiki-dark:#98C379">   0%</span><span style="color:#98C379;--shiki-dark:#98C379"> /dev</span></span>
@@ -97,7 +98,7 @@
 <span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">tmpfs</span><span style="color:#98C379;--shiki-dark:#98C379">                   98M</span><span style="color:#98C379;--shiki-dark:#98C379">   28K</span><span style="color:#98C379;--shiki-dark:#98C379">   98M</span><span style="color:#98C379;--shiki-dark:#98C379">   1%</span><span style="color:#98C379;--shiki-dark:#98C379"> /run/user/1000</span></span>
 <span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">192.168.100.1:/data</span><span style="color:#98C379;--shiki-dark:#98C379">   27G</span><span style="color:#98C379;--shiki-dark:#98C379">  5.6G</span><span style="color:#98C379;--shiki-dark:#98C379">   22G</span><span style="color:#98C379;--shiki-dark:#98C379">  21%</span><span style="color:#98C379;--shiki-dark:#98C379"> /data</span></span></code></pre>
 </div><p>至此，NFS配置结束，如有需要，可配置目录权限</p>
-<h3>四、如何取消挂载</h3>
+<h2>四、如何取消挂载</h2>
 <div class="language-bash" data-ext="bash" data-title="bash"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">[root@study /]# umount /data/</span></span>
 <span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">[root@study /]# df -h</span></span>
 <span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">Filesystem</span><span style="color:#98C379;--shiki-dark:#98C379">      Size</span><span style="color:#98C379;--shiki-dark:#98C379">  Used</span><span style="color:#98C379;--shiki-dark:#98C379"> Avail</span><span style="color:#98C379;--shiki-dark:#98C379"> Use%</span><span style="color:#98C379;--shiki-dark:#98C379"> Mounted</span><span style="color:#98C379;--shiki-dark:#98C379"> on</span></span>

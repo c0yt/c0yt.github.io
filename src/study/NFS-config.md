@@ -12,7 +12,15 @@ tag:
 ---
 # NFS配置
 
-## 一、安装NFS服务
+## 简介
+
+:::: info (*´▽｀)ノノ
+   &nbsp;&nbsp;&nbsp;&nbsp;**NFS**（Network File System） 是由 Sun Microsystems 开发的一种**分布式文件系统协议**，允许通过网络在多台计算机之间共享文件和目录。它通过将**远程存储挂载到本地文件系统**，实现跨服务器的透明文件访问，广泛应用于**集群存储**、**虚拟机共享数据**、**Web服务静态资源同步**等场景。
+::::
+
+---------------------------------------------------------------------------------------------------------------------------------------
+## 安装NFS服务
+
 ### 1.检测安装情况
 ```bash
 rpm -qa | grep nfs-utils
@@ -22,18 +30,18 @@ rpm -qa | grep rpcbind
 ```bash
 yum -y install nfs-utils rpcbind
 ```
-## 二、服务端配置
+## 服务端配置
 ### 1.启动rpcbind服务
 ```bash
 systemctl enable rpcbind
 systemctl start rpcbind
 ```
-### 2.启动nfs服务
+### 2.启动NFS服务
 ```bash
 systemctl enable nfs
 systemctl start nfs
 ```
-### 3.查看 RPC 服务的注册状况
+### 3.检查RPC 服务注册状况
 ```bash
 [root@study sky]# rpcinfo -p
    program vers proto   port  service
@@ -78,7 +86,7 @@ vim /etc/exports
 /data/  192.168.100.1/24(rw)
 # 限制192.168.100.1/24网段可访问，rw为读写权限
 ```
-### 6.重新加载让配置生效
+### 6.重新加载配置文件
 ```
 systemctl reload nfs
 ```
@@ -88,7 +96,7 @@ systemctl reload nfs
 Export list for localhost:
 /data 192.168.100.1/24
 ```
-## 三、客户端配置
+## 客户端配置
 ### 1.安装NFS
 ```bash
 yum -y install nfs-utils
@@ -97,10 +105,21 @@ yum -y install nfs-utils
 ```bash
 mkdir -p /data/
 ```
-### 3.挂载目录到本机/data/目录
+### 3.挂载共享目录
+#### (1).临时挂载
 ```bash
 mount -t nfs 192.168.100.1:/data/ /data/ -o proto=tcp -o nolock
 ```
+#### (2).永久挂载
+- 方法一：将挂载命令写入`/etc/rc.local`文件
+  ```bash
+  vim /etc/rc.local
+  chmod +x /etc/rc.d/rc.local
+  ```
+- 方法二：将相关配置写入`/etc/fstab`文件
+  ```bash
+  192.168.100.1:/data/  /data/ nfs  defaults 0 0
+  ```
 ### 4.查看挂载结果
 ```bash
 [root@study /]# df -h
@@ -115,7 +134,50 @@ tmpfs                   98M   28K   98M   1% /run/user/1000
 192.168.100.1:/data   27G  5.6G   22G  21% /data
 ```
 至此，NFS配置结束，如有需要，可配置目录权限
-## 四、如何取消挂载
+
+## 高级选项
+
+### 1. 核心配置
+
+| 服务端配置 | 说明                                                         |
+| :--------- | :----------------------------------------------------------- |
+| rw         | 可以读写共享目录                                             |
+| ro         | 只读 read only                                               |
+| sync       | 同步,只要用户上传,就把数据写到磁盘上                         |
+| async      | 异步,用户上传的数据,nfs先临时存放到内存中,过一段时间写入到磁盘. 并发高,数据可能丢失 |
+
+### 2.用户压缩
+
+- 介绍：NFS客户端挂载NFS服务端后,创建的文件默认属于nfsnobody,这种操作就叫用户压缩(映射)
+
+  | 服务端配置选项     | 说明                                                         |
+  | ------------------ | ------------------------------------------------------------ |
+  | root_squash        | 如果客户端是 root 用户访问，则到了 NFS 服务端会被压缩（**默认的**） |
+  | no_all_squash      | 如果客户端不是 root 用户访问，则不进行压缩（保存原始用户，**默认的**） |
+  | all_squash         | 所有用户都进行压缩（不是太安全）                             |
+  | anonuid 和 anongid | 用于指定压缩的匿名用户（默认是 nfsnobody 用户）anonuid=65534, anongid=65534 |
+
+  实际生成环境下，最好指定一个用户用于NFS，流程可如下：
+
+  - 部署NFS服务，rpcbind
+
+  - 添加指定用户，指定UID,GID
+
+  - 修改服务端配置文件
+
+  - 客户端进行挂载测试
+
+### 3.安全优化
+
+​	为尽可能保证安全性，需让客户端挂载 只能上传,而无法执行
+ ```bash
+ mount -o noexec,nosuid,nodev -t nfs 192.168.100.1:/data/ /data/
+ ```
+> noexec 挂载的NFS目录中如果有命令，无法运行
+> nosuid 带有suid的命令
+> nodev 带有特殊属性的文件
+
+## 关于取消挂载
 ```bash
 [root@study /]# umount /data/
 [root@study /]# df -h

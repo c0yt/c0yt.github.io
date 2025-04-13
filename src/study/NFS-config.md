@@ -12,45 +12,28 @@ tag:
 ---
 # NFS配置
 
-### 一、安装NFS服务
-#### 检测安装情况
+## 一、安装NFS服务
+### 1.检测安装情况
 ```bash
 rpm -qa | grep nfs-utils
 rpm -qa | grep rpcbind
 ```
-#### 未安装情况
+### 2.未安装情况
 ```bash
 yum -y install nfs-utils rpcbind
 ```
-### 二、服务端配置
-#### 创建共享目录
-```bash
-mkdir -p /data/
-```
-#### 编辑/etc/exports文件
-```bash
-vim /etc/exports
-```
-填写以下内容
-```bash
-/data/  192.168.100.1/24(rw)
-# 限制192.168.100.1/24网段可访问，rw为读写权限
-```
-#### 重新加载让配置生效
-```
-exportfs -r
-```
-#### 启动rpcbind服务
+## 二、服务端配置
+### 1.启动rpcbind服务
 ```bash
 systemctl enable rpcbind
 systemctl start rpcbind
 ```
-#### 启动nfs服务
+### 2.启动nfs服务
 ```bash
 systemctl enable nfs
 systemctl start nfs
 ```
-#### 查看 RPC 服务的注册状况
+### 3.查看 RPC 服务的注册状况
 ```bash
 [root@study sky]# rpcinfo -p
    program vers proto   port  service
@@ -81,26 +64,44 @@ systemctl start nfs
     100021    3   tcp  33609  nlockmgr
     100021    4   tcp  33609  nlockmgr
 ```
-#### 检查服务端共享信息
+### 4.创建共享目录
+```bash
+mkdir -p /data/
+chown -R nfsnobody.nfsnobody /data/
+```
+### 5.编辑`/etc/exports`文件
+```bash
+vim /etc/exports
+```
+填写以下内容
+```bash
+/data/  192.168.100.1/24(rw)
+# 限制192.168.100.1/24网段可访问，rw为读写权限
+```
+### 6.重新加载让配置生效
+```
+systemctl reload nfs
+```
+### 7.检查服务端共享信息
 ```bash
 [root@study data]# showmount -e localhost
 Export list for localhost:
 /data 192.168.100.1/24
 ```
-### 三、客户端配置
-#### 安装NFS
+## 三、客户端配置
+### 1.安装NFS
 ```bash
 yum -y install nfs-utils
 ```
-#### 创建挂载目录
+### 2.创建挂载目录
 ```bash
 mkdir -p /data/
 ```
-#### 挂载目录到本机/data/目录
+### 3.挂载目录到本机/data/目录
 ```bash
 mount -t nfs 192.168.100.1:/data/ /data/ -o proto=tcp -o nolock
 ```
-#### 查看挂载结果
+### 4.查看挂载结果
 ```bash
 [root@study /]# df -h
 Filesystem             Size  Used Avail Use% Mounted on
@@ -114,7 +115,7 @@ tmpfs                   98M   28K   98M   1% /run/user/1000
 192.168.100.1:/data   27G  5.6G   22G  21% /data
 ```
 至此，NFS配置结束，如有需要，可配置目录权限
-### 四、如何取消挂载
+## 四、如何取消挂载
 ```bash
 [root@study /]# umount /data/
 [root@study /]# df -h

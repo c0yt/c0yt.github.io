@@ -1,5 +1,5 @@
 ---
-title: "导航"
+title: "笔记"
 icon: study
 date: 2025-04-12
 index: true

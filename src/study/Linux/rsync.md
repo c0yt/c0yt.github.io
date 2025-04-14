@@ -10,7 +10,7 @@ tag:
   - rsync
   - 运维
 ---
-# rsync + sersync实现实时备份同步
+# rsync+sersync实现实时备份同步
 
 ## 简介
 

@@ -6,8 +6,8 @@
     <link>https://blog.fzero.me/</link>
     <description>null&amp;apos;s Blog</description>
     <language>zh-CN</language>
-    <pubDate>Sun, 13 Apr 2025 13:52:32 GMT</pubDate>
-    <lastBuildDate>Sun, 13 Apr 2025 13:52:32 GMT</lastBuildDate>
+    <pubDate>Mon, 14 Apr 2025 12:56:49 GMT</pubDate>
+    <lastBuildDate>Mon, 14 Apr 2025 12:56:49 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>study</category>
@@ -16,8 +16,8 @@
     <category>project</category>
     <item>
       <title>NFS配置</title>
-      <link>https://blog.fzero.me/study/NFS-config.html</link>
-      <guid>https://blog.fzero.me/study/NFS-config.html</guid>
+      <link>https://blog.fzero.me/study/Linux/NFS-config.html</link>
+      <guid>https://blog.fzero.me/study/Linux/NFS-config.html</guid>
       <source url="https://blog.fzero.me/rss.xml">NFS配置</source>
       <description>NFS配置 简介 (*´▽｀)ノノ NFS（Network File System） 是由 Sun Microsystems 开发的一种分布式文件系统协议，允许通过网络在多台计算机之间共享文件和目录。它通过将远程存储挂载到本地文件系统，实现跨服务器的透明文件访问，广泛应用于集群存储、虚拟机共享数据、Web服务静态资源同步等场景。 安装NFS服务 1.检...</description>
       <category>study</category>

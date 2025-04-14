@@ -16,6 +16,19 @@ export const zhSidebar = sidebar({
       link: "project/",
     },
     {
+      text: "笔记",
+      icon: "study",
+      prefix: "study/",
+      children: [
+        {
+          text: "Linux",
+          icon: "linux",
+          prefix: "Linux/",
+          link: "Linux/",
+        },
+      ],
+    },
+    {
       text: "留言板",
       icon: "mark",
       prefix: "talk/",
@@ -28,13 +41,6 @@ export const zhSidebar = sidebar({
       link: "about",
     },
   ],
-  // "/posts/Linux/": "structure",
-  // "/posts/Python/": "structure",
-  // "/posts/cross-platform/Flutter/": "structure",
-  // "/posts/cross-platform/ReactNative/": "structure",
-  // "/posts/iOS/": "structure",
-  // "/posts/Web/": "structure",
-  // "/site/": "structure",
-  // "/blog": "structure",
-  // "/tutorial": "structure",
+  "/study/Linux/": "structure",
+  "/project/": "structure",
 });

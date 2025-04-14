@@ -1,7 +1,7 @@
 ---
 date: 2025-3-20 20:48:00
-icon: software
-sidebar: false
+icon: "tool"
+star: true
 category:
   - project
 tag:

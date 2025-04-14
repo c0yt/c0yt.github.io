@@ -39,9 +39,9 @@ export const zhNavbar = navbar([
     prefix: "/study/",
     children: [
       {
-        text: "NFS配置",
-        icon: "study",
-        link: "NFS-config"
+        text: "Linux",
+        icon: "linux",
+        link: "Linux/"
       }
     ]
   },
@@ -52,7 +52,7 @@ export const zhNavbar = navbar([
     children: [
       {
         text: "XkTool",
-        icon: "info",
+        icon: "tool",
         link: "XkTool"
       }
     ]

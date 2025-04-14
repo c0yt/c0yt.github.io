@@ -1,7 +1,7 @@
 ---
 date: 2025-4-12 21:54:00
-icon: study
-sidebar: false
+icon: "linux"
+star: true
 category:
   - study
 tag:

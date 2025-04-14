@@ -6,8 +6,8 @@
     <link>https://blog.fzero.me/</link>
     <description>null&amp;apos;s Blog</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 14 Apr 2025 14:30:02 GMT</pubDate>
-    <lastBuildDate>Mon, 14 Apr 2025 14:30:02 GMT</lastBuildDate>
+    <pubDate>Mon, 14 Apr 2025 14:44:14 GMT</pubDate>
+    <lastBuildDate>Mon, 14 Apr 2025 14:44:14 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>study</category>
@@ -15,11 +15,11 @@
     <category>About</category>
     <category>project</category>
     <item>
-      <title>rsync + sersync实现实时备份同步</title>
+      <title>rsync+sersync实现实时备份同步</title>
       <link>https://blog.fzero.me/study/Linux/rsync.html</link>
       <guid>https://blog.fzero.me/study/Linux/rsync.html</guid>
-      <source url="https://blog.fzero.me/rss.xml">rsync + sersync实现实时备份同步</source>
-      <description>rsync + sersync实现实时备份同步 简介 (*´▽｀)ノノ rsync 是一个常用的 Linux 应用程序，用于文件同步，差量传输，但是每次文件发生变更需要手动去执行命令完成同步，可以依赖inotify进行检测文件变更情况，但需要另外编写脚本，就在苦恼之时，发现了一款工具——sersync，它国产开源，内置inotify+rsync命令，可...</description>
+      <source url="https://blog.fzero.me/rss.xml">rsync+sersync实现实时备份同步</source>
+      <description>rsync+sersync实现实时备份同步 简介 (*´▽｀)ノノ rsync 是一个常用的 Linux 应用程序，用于文件同步，差量传输，但是每次文件发生变更需要手动去执行命令完成同步，可以依赖inotify进行检测文件变更情况，但需要另外编写脚本，就在苦恼之时，发现了一款工具——sersync，它国产开源，内置inotify+rsync命令，可以记...</description>
       <category>study</category>
       <pubDate>Mon, 14 Apr 2025 22:18:22 GMT</pubDate>
       <content:encoded><![CDATA[
